@@ -15,7 +15,7 @@ export default function ({ content }: { content: string }) {
   const [isChecked, setCheckState] = useState(false);
 
   return (
-    <div className="flex flex-row justify-between w-full items-center h-9 px-2 py-6 rounded-md bg-white">
+    <div className="flex flex-row justify-between w-full items-center h-9 px-2 py-6 rounded-md bg-white shadow-sm ">
       <Checkbox isSelected={isChecked} onValueChange={setCheckState} size="lg">
         {content}
       </Checkbox>
