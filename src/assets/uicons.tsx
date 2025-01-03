@@ -104,20 +104,18 @@ const MoreVerticalIcon = (props: React.SVGProps<SVGSVGElement>) => (
 
 const PlusSignIcon = (props: React.SVGProps<SVGSVGElement>) => (
   <svg
-    xmlns="http://www.w3.org/2000/svg"
+    width="24"
+    height="24"
     viewBox="0 0 24 24"
-    width={24}
-    height={24}
-    color={"#000000"}
-    fill={"none"}
-    {...props}
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
   >
     <path
-      d="M12 4V20M20 12H4"
+      d="M12 5V19M5 12H19"
       stroke="currentColor"
-      strokeWidth="1.5"
-      strokeLinecap="round"
-      strokeLinejoin="round"
+      stroke-width="2"
+      stroke-linecap="round"
+      stroke-linejoin="round"
     />
   </svg>
 );
