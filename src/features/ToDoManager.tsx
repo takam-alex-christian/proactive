@@ -1,6 +1,23 @@
-import ToDoItemsLayout from "@/layouts/ToDoItemsLayout";
-import { ReactNode } from "react";
+"use client";
+import { ReactNode, useContext, useEffect } from "react";
 
-export default function ({ children }: { children: ReactNode }) {
-  return <ToDoItemsLayout>{children}</ToDoItemsLayout>;
+import ToDoItemsLayout from "@/layouts/ToDoItemsLayout";
+
+import { ToDoContext } from "@/lib/contexts";
+import ToDoItem from "@/components/ToDoItem";
+
+export default function () {
+  const toDoState = useContext(ToDoContext);
+
+  useEffect(() => {
+    console.log(toDoState);
+  }, [toDoState]);
+
+  return (
+    <ToDoItemsLayout>
+      {toDoState.todos.map((eachToDoItem) => {
+        return <ToDoItem content={eachToDoItem.text} />;
+      })}
+    </ToDoItemsLayout>
+  );
 }
