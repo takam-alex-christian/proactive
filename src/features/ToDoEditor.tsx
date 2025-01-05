@@ -1,6 +1,6 @@
 "use client";
 import { FormEvent, useState, ChangeEvent, useContext } from "react";
-import { ToDoDispatcher } from "@/lib/contexts";
+import { ToDoContext, ToDoDispatcher } from "@/lib/contexts";
 
 import ToDoEditor from "@/components/ToDoEditor";
 
@@ -8,6 +8,7 @@ export default function () {
   const [editorValue, setEditorValue] = useState("");
 
   const toDoDispatch = useContext(ToDoDispatcher);
+  const toDoState = useContext(ToDoContext);
 
   function editorValueChangeHandler(e: ChangeEvent<HTMLInputElement>) {
     setEditorValue(e.currentTarget.value);
@@ -18,7 +19,11 @@ export default function () {
 
     toDoDispatch({
       type: "created",
-      payload: { id: "0", text: editorValue, completed: false },
+      payload: {
+        id: toDoState.todos.length.toString(),
+        text: editorValue,
+        completed: false,
+      },
     });
   }
   return (
