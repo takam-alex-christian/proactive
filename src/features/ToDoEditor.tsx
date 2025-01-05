@@ -20,11 +20,13 @@ export default function () {
     toDoDispatch({
       type: "created",
       payload: {
-        id: toDoState.todos.length.toString(),
+        id: Date.now().toString(),
         text: editorValue,
         completed: false,
       },
     });
+
+    setEditorValue("");
   }
   return (
     <ToDoEditor
