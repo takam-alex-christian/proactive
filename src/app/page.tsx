@@ -6,6 +6,7 @@ import toDoReducer from "@/lib/reducers";
 
 import ToDoEditor from "@/features/ToDoEditor";
 import ToDoManager from "@/features/ToDoManager";
+import AppHeaderFeature from "@/features/AppHeaderFeature";
 
 export default function Home() {
   const [todoState, todoDispatch] = useReducer(toDoReducer, initialToDoState);
@@ -15,6 +16,7 @@ export default function Home() {
       <ToDoContext.Provider value={todoState}>
         <ToDoDispatcher.Provider value={todoDispatch}>
           {/* todo header */}
+          <AppHeaderFeature />
 
           {/* todo manager */}
           <ToDoManager />
