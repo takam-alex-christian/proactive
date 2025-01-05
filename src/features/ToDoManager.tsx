@@ -1,4 +1,5 @@
 "use client";
+import { AnimatePresence, motion } from "framer-motion";
 import { ReactNode, useContext, useEffect } from "react";
 
 import ToDoItemsLayout from "@/layouts/ToDoItemsLayout";
@@ -15,9 +16,25 @@ export default function () {
 
   return (
     <ToDoItemsLayout>
-      {toDoState.todos.map((eachToDoItem) => {
-        return <ToDoItem content={eachToDoItem.text} />;
-      })}
+      <AnimatePresence>
+        {toDoState.todos.map((eachToDoItem) => {
+          return (
+            <motion.div
+              key={eachToDoItem.id}
+              initial={{ scaleY: 0, opacity: 0 }}
+              animate={{ scaleY: 1, opacity: 1 }}
+              transition={{}}
+              exit={{ opacity: 0, scaleY: 0 }}
+            >
+              {" "}
+              <ToDoItem
+                key={eachToDoItem.id}
+                content={eachToDoItem.text}
+              />{" "}
+            </motion.div>
+          );
+        })}
+      </AnimatePresence>
     </ToDoItemsLayout>
   );
 }
