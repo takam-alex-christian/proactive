@@ -3,10 +3,11 @@
 @tailwind utilities;
 
 :root {
-  --background: #f6f6f6;
-  --foreground: #171717;
+  --background: #ebebeb;
+  --foreground: #000000;
 }
 
+/* not handling dark mode for now */
 /* @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;

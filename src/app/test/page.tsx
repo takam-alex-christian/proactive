@@ -1,4 +1,5 @@
 "use client";
+import ToDoEditor from "@/features/ToDoEditor";
 import ToDoItem from "@/components/ToDoItem";
 import ToDoManager from "@/features/ToDoManager";
 import ToDoItemsLayout from "@/layouts/ToDoItemsLayout";
@@ -13,12 +14,23 @@ export default function () {
         <ToDoItem content="Build portfolios projects" />
       </ToDoItemsLayout> */}
 
-      <ToDoManager>
+      {/* <ToDoManager>
         <ToDoItemsLayout>
           <ToDoItem content="Build multiple projects" />
           <ToDoItem content="Build portfolios projects" />
         </ToDoItemsLayout>
-      </ToDoManager>
+      </ToDoManager> */}
+
+      <div className="flex flex-col gap-4 w-full">
+        {/* <ToDoManager>
+          <ToDoItemsLayout>
+            <ToDoItem content="Build multiple projects" />
+            <ToDoItem content="Build portfolios projects" />
+          </ToDoItemsLayout>
+        </ToDoManager> */}
+
+        <ToDoEditor />
+      </div>
     </main>
   );
 }

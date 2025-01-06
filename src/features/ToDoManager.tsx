@@ -26,11 +26,7 @@ export default function () {
               transition={{}}
               exit={{ opacity: 0, scaleY: 0 }}
             >
-              {" "}
-              <ToDoItem
-                key={eachToDoItem.id}
-                content={eachToDoItem.text}
-              />{" "}
+              <ToDoItem key={eachToDoItem.id} content={eachToDoItem.text} />
             </motion.div>
           );
         })}
