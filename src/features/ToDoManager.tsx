@@ -17,19 +17,23 @@ export default function () {
   return (
     <ToDoItemsLayout>
       <AnimatePresence>
-        {toDoState.todos.map((eachToDoItem) => {
-          return (
-            <motion.div
-              key={eachToDoItem.id}
-              initial={{ scaleY: 0, opacity: 0 }}
-              animate={{ scaleY: 1, opacity: 1 }}
-              transition={{}}
-              exit={{ opacity: 0, scaleY: 0 }}
-            >
-              <ToDoItem key={eachToDoItem.id} content={eachToDoItem.text} />
-            </motion.div>
-          );
-        })}
+        {toDoState.todos
+          .filter((eachItem) => {
+            return eachItem.collectionName == toDoState.selectedCollection;
+          })
+          .map((eachToDoItem) => {
+            return (
+              <motion.div
+                key={eachToDoItem.id}
+                initial={{ scaleY: 0, opacity: 0 }}
+                animate={{ scaleY: 1, opacity: 1 }}
+                transition={{}}
+                exit={{ opacity: 0, scaleY: 0, marginTop: -56 }}
+              >
+                <ToDoItem key={eachToDoItem.id} content={eachToDoItem.text} />
+              </motion.div>
+            );
+          })}
       </AnimatePresence>
     </ToDoItemsLayout>
   );
