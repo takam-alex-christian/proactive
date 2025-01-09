@@ -1,3 +1,7 @@
 export default function ({ children }: { children: React.ReactNode }) {
-  return <div className="relative flex flex-col w-full gap-2 ">{children}</div>;
+  return (
+    <div className="relative flex flex-col w-full h-full gap-2 mb-20">
+      {children}
+    </div>
+  );
 }
