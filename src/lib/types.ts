@@ -16,6 +16,11 @@ type CollectionItemType = {
   id: string;
 };
 
+type EditorStateType = {
+  text: string;
+  isError: boolean;
+  errorMessage: string;
+};
 type ToDoReducerActionType =
   | { type: "loaded_state"; payload: ToDoStateType }
   | { type: "deleted" }
@@ -29,4 +34,5 @@ export type {
   CollectionItemType,
   ToDoStateType,
   ToDoReducerActionType,
+  EditorStateType,
 };
