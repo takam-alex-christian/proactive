@@ -7,7 +7,7 @@ export default function () {
   const toDoDispatch = useContext(ToDoDispatcher);
 
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col min-h-10">
       {toDoState.collections.map((eachCollection) => {
         return (
           <Button
