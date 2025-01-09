@@ -9,6 +9,7 @@ import ToDoManager from "@/features/ToDoManager";
 import AppHeaderFeature from "@/features/AppHeaderFeature";
 import AppContainer from "@/layouts/AppContainer";
 import ToDoEditorLayout from "@/layouts/ToDoEditorLayout";
+import LeftPaneFeature from "@/features/LeftPaneFeature";
 
 export default function Home() {
   const [todoState, todoDispatch] = useReducer(toDoReducer, initialToDoState);
@@ -16,17 +17,20 @@ export default function Home() {
   return (
     <ToDoContext.Provider value={todoState}>
       <ToDoDispatcher.Provider value={todoDispatch}>
-        <AppContainer>
-          {/* todo header */}
-          <AppHeaderFeature />
+        <main className="flex flex-row gap-4 h-screen">
+          <LeftPaneFeature />
+          <AppContainer>
+            {/* todo header */}
+            <AppHeaderFeature />
 
-          {/* todo manager */}
-          <ToDoManager />
+            {/* todo manager */}
+            <ToDoManager />
 
-          <ToDoEditorLayout>
-            <ToDoEditor />
-          </ToDoEditorLayout>
-        </AppContainer>
+            <ToDoEditorLayout>
+              <ToDoEditor />
+            </ToDoEditorLayout>
+          </AppContainer>
+        </main>
       </ToDoDispatcher.Provider>
     </ToDoContext.Provider>
   );
