@@ -2,7 +2,7 @@
 import { FormEvent, useState, ChangeEvent, useContext } from "react";
 import { ToDoContext, ToDoDispatcher } from "@/lib/contexts";
 
-import ToDoEditor from "@/components/ToDoEditor";
+import SimpleEditor from "@/components/SimpleEditor";
 
 export default function () {
   const [editorValue, setEditorValue] = useState("");
@@ -29,10 +29,11 @@ export default function () {
     setEditorValue("");
   }
   return (
-    <ToDoEditor
+    <SimpleEditor
       editorValue={editorValue}
       onChange={editorValueChangeHandler}
       onSubmit={onSubmit}
+      placeholder="create new task"
     />
   );
 }
