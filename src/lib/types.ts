@@ -5,12 +5,26 @@ type ToDoItemType = {
 };
 
 type ToDoStateType = {
+  selectedCollection: string;
+  collections: Array<CollectionItemType>;
   todos: Array<ToDoItemType>;
+};
+
+type CollectionItemType = {
+  name: string;
+  id: string;
 };
 
 type ToDoReducerActionType =
   | { type: "deleted" }
   | { type: "completed" }
-  | { type: "created"; payload: ToDoItemType };
+  | { type: "created"; payload: ToDoItemType }
+  | { type: "collection_created"; payload: CollectionItemType }
+  | { type: "selected_collection_changed"; payload: { name: string } };
 
-export type { ToDoItemType, ToDoStateType, ToDoReducerActionType };
+export type {
+  ToDoItemType,
+  CollectionItemType,
+  ToDoStateType,
+  ToDoReducerActionType,
+};
