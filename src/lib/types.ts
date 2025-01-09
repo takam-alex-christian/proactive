@@ -1,4 +1,5 @@
 type ToDoItemType = {
+  collectionName: string; // could be replace by collection id instead
   completed: false;
   text: string;
   id: string;
