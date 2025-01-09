@@ -1,5 +1,10 @@
 import {} from "react";
-import { ToDoItemType, ToDoStateType, ToDoReducerActionType } from "./types";
+import {
+  ToDoItemType,
+  ToDoStateType,
+  ToDoReducerActionType,
+  CollectionItemType,
+} from "./types";
 
 function toDoReducer(
   toDoData: ToDoStateType,
@@ -8,6 +13,21 @@ function toDoReducer(
   switch (action.type) {
     case "created": {
       return { ...toDoData, todos: [...toDoData.todos, action.payload] };
+    }
+    case "collection_created": {
+      return {
+        ...toDoData,
+        collections: [
+          ...toDoData.collections,
+          { name: action.payload.name, id: action.payload.id },
+        ],
+      };
+    }
+    case "selected_collection_changed": {
+      return {
+        ...toDoData,
+        selectedCollection: action.payload.name,
+      };
     }
     case "deleted": {
       return toDoData;
