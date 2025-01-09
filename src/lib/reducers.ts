@@ -11,6 +11,9 @@ function toDoReducer(
   action: ToDoReducerActionType
 ): ToDoStateType {
   switch (action.type) {
+    case "loaded_state": {
+      return action.payload;
+    }
     case "created": {
       return { ...toDoData, todos: [...toDoData.todos, action.payload] };
     }

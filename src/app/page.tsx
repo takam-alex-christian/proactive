@@ -14,6 +14,17 @@ import LeftPaneFeature from "@/features/LeftPaneFeature";
 export default function Home() {
   const [todoState, todoDispatch] = useReducer(toDoReducer, initialToDoState);
 
+  useEffect(() => {
+    let storedState = localStorage.getItem("toDoState");
+    // use a setstate to init state
+    if (storedState) {
+      todoDispatch({ type: "loaded_state", payload: JSON.parse(storedState) });
+    }
+  }, []);
+  useEffect(() => {
+    localStorage.setItem("toDoState", JSON.stringify(todoState));
+  }, [todoState]);
+
   return (
     <ToDoContext.Provider value={todoState}>
       <ToDoDispatcher.Provider value={todoDispatch}>

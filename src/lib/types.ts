@@ -16,6 +16,7 @@ type CollectionItemType = {
 };
 
 type ToDoReducerActionType =
+  | { type: "loaded_state"; payload: ToDoStateType }
   | { type: "deleted" }
   | { type: "completed" }
   | { type: "created"; payload: ToDoItemType }
