@@ -1,5 +1,5 @@
 "use client";
-import { FormEvent, useState, ChangeEvent, useContext } from "react";
+import { FormEvent, useState, ChangeEvent, useContext, useEffect } from "react";
 import { ToDoContext, ToDoDispatcher } from "@/lib/contexts";
 
 import SimpleEditor from "@/components/SimpleEditor";
@@ -21,7 +21,7 @@ export default function () {
   function editorValueChangeHandler(e: ChangeEvent<HTMLInputElement>) {
     let textValue: string = e.currentTarget.value;
     setEditorState((prevState) => {
-      return { ...prevState, text: textValue };
+      return { ...prevState, text: textValue, isError: false };
     });
   }
 
@@ -33,9 +33,40 @@ export default function () {
         return collectionName.name == editorState.text;
       })
     ) {
-      // raise visual indicator
+      setEditorState((prevState) => {
+        return {
+          ...prevState,
+          isError: true,
+          errorMessage: "collection already exists!",
+        };
+      });
+
+      setTimeout(() => {
+        setEditorState((prevState) => {
+          return { ...prevState, isError: false };
+        });
+      }, 2000);
       return;
     }
+
+    if (editorState.text.length == 0) {
+      setEditorState((prevState) => {
+        return {
+          ...prevState,
+          isError: true,
+          errorMessage: "collection name can't be empty",
+        };
+      });
+
+      setTimeout(() => {
+        setEditorState((prevState) => {
+          return { ...prevState, isError: false };
+        });
+      }, 2000);
+
+      return;
+    }
+
     toDoDispatch({
       type: "collection_created",
       payload: {

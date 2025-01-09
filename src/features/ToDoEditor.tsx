@@ -28,6 +28,37 @@ export default function () {
     e.preventDefault();
 
     if (!toDoState.selectedCollection) {
+      setEditorState((prevState) => {
+        return {
+          ...prevState,
+          isError: true,
+          errorMessage: "create a collection first!",
+        };
+      });
+
+      setTimeout(() => {
+        setEditorState((prevState) => {
+          return { ...prevState, isError: false };
+        });
+      }, 2000);
+
+      return;
+    }
+
+    if (editorState.text.length == 0) {
+      setEditorState((prevState) => {
+        return {
+          ...prevState,
+          isError: true,
+          errorMessage: "Task can't be empty!",
+        };
+      });
+
+      setTimeout(() => {
+        setEditorState((prevState) => {
+          return { ...prevState, isError: false };
+        });
+      }, 2000);
       return;
     }
 

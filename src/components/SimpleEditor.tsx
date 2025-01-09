@@ -1,6 +1,6 @@
 import { useState, ChangeEvent } from "react";
 
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 
 import {
   Textarea,
@@ -37,16 +37,6 @@ export default function ToDoEditor({
     <div className="">
       <form onSubmit={onSubmit}>
         <div className="relative flex flex-row justify-between items-center h-10">
-          {editorState.isError && (
-            <motion.div
-              className="absolute bottom-10 px-4 py-2 bg-red-100 text-red-500 rounded-md w-full"
-              initial={{ scale: 0 }}
-              animate={{ scale: 1 }}
-              exit={{ scale: 0 }}
-            >
-              {editorState.errorMessage}
-            </motion.div>
-          )}
           <div className="flex flex-row items-center gap-2 px-3 bg-black text-white w-full h-full cursor-text focus-within:bg-black rounded-full">
             <PlusSignIcon className=" text-white w-2 h-5 font-extrabold " />
             <input
@@ -58,6 +48,18 @@ export default function ToDoEditor({
               name="todo_editor"
             />
           </div>
+          <AnimatePresence>
+            {editorState.isError && (
+              <motion.div
+                className="absolute bottom-11 px-4 py-2 bg-red-100 text-xs text-red-500 rounded-md w-full"
+                initial={{ scale: 0.4, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                exit={{ scaleX: 0, opacity: 0, left: -500 }}
+              >
+                {editorState.errorMessage}
+              </motion.div>
+            )}
+          </AnimatePresence>
         </div>
       </form>
     </div>
