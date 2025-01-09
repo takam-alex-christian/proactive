@@ -3,34 +3,51 @@ import { FormEvent, useState, ChangeEvent, useContext } from "react";
 import { ToDoContext, ToDoDispatcher } from "@/lib/contexts";
 
 import SimpleEditor from "@/components/SimpleEditor";
+import { EditorStateType } from "@/lib/types";
 
 export default function () {
   const [editorValue, setEditorValue] = useState("");
+
+  const [editorState, setEditorState] = useState<EditorStateType>({
+    text: "",
+    isError: false,
+    errorMessage: "",
+  });
 
   const toDoDispatch = useContext(ToDoDispatcher);
   const toDoState = useContext(ToDoContext);
 
   function editorValueChangeHandler(e: ChangeEvent<HTMLInputElement>) {
-    setEditorValue(e.currentTarget.value);
+    let textValue: string = e.currentTarget.value;
+    setEditorState((prevState) => {
+      return { ...prevState, text: textValue };
+    });
   }
 
   function onSubmit(e: FormEvent) {
     e.preventDefault();
 
+    if (!toDoState.selectedCollection) {
+      return;
+    }
+
     toDoDispatch({
       type: "created",
       payload: {
         id: Date.now().toString(),
-        text: editorValue,
+        text: editorState.text,
         completed: false,
+        collectionName: toDoState.selectedCollection,
       },
     });
 
-    setEditorValue("");
+    setEditorState((prevState) => {
+      return { ...prevState, text: "", isError: false, errorMessage: "" };
+    });
   }
   return (
     <SimpleEditor
-      editorValue={editorValue}
+      editorState={editorState}
       onChange={editorValueChangeHandler}
       onSubmit={onSubmit}
       placeholder="create new task"
