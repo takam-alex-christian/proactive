@@ -20,6 +20,9 @@ function toDoReducer(
     case "collection_created": {
       return {
         ...toDoData,
+        selectedCollection: !toDoData.selectedCollection
+          ? action.payload.name
+          : toDoData.selectedCollection,
         collections: [
           ...toDoData.collections,
           { name: action.payload.name, id: action.payload.id },
