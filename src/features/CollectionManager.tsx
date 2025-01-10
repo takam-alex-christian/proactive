@@ -1,6 +1,6 @@
 import { useContext } from "react";
 import { ToDoContext, ToDoDispatcher } from "@/lib/contexts";
-import { Button } from "@nextui-org/react";
+import { Button, Chip } from "@nextui-org/react";
 import { AnimatePresence, motion } from "framer-motion";
 
 export default function () {
@@ -37,13 +37,30 @@ export default function () {
                   });
                 }}
                 key={eachCollection.id}
-                className={`flex items-center justify-start w-full ${
+                className={`flex flex-row items-center justify-between w-full ${
                   toDoState.selectedCollection == eachCollection.name
                     ? "bg-[#F6F6F6]"
                     : "bg-transparent "
                 }`}
               >
-                {eachCollection.name}
+                <div>{eachCollection.name}</div>
+                <Chip
+                  size="sm"
+                  classNames={{
+                    base: `${
+                      toDoState.selectedCollection == eachCollection.name
+                        ? "bg-white"
+                        : "bg-[#F6F6F6]"
+                    }`,
+                    content: "w-5 text-xs font-semibold",
+                  }}
+                >
+                  {
+                    toDoState.todos.filter((eachToDoItem) => {
+                      return eachToDoItem.collectionName == eachCollection.name;
+                    }).length
+                  }
+                </Chip>
               </Button>
             </motion.div>
           );
