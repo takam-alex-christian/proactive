@@ -8,11 +8,11 @@ export default function CollectionManager() {
   const toDoDispatch = useContext(ToDoDispatcher);
 
   return (
-    <div className="relative flex flex-col pb-4 min-h-10 max-h-max overflow-y-auto overflow-x-hidden">
+    <div className="relative flex flex-col pb-4 min-h-14 overflow-x-hidden">
       <AnimatePresence>
         {toDoState.collections.length == 0 && (
           <motion.div
-            className="absolute text-gray-700"
+            className="absolute text-gray-700 min-h-fit"
             initial={{ scale: 0, opacity: 0, left: -500 }}
             animate={{ scale: 1, opacity: 1, left: 0 }}
             exit={{ scale: 0, opacity: 0, left: -500 }}
