@@ -1,6 +1,6 @@
 "use client";
 import ToDoEditor from "@/features/ToDoEditor";
-import ToDoItem from "@/components/ToDoItem";
+import ToDoItem from "@/features/ToDoItem";
 import ToDoManager from "@/features/ToDoManager";
 import ToDoItemsLayout from "@/layouts/ToDoItemsLayout";
 

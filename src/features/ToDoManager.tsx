@@ -5,7 +5,7 @@ import { ReactNode, useContext, useEffect } from "react";
 import ToDoItemsLayout from "@/layouts/ToDoItemsLayout";
 
 import { ToDoContext } from "@/lib/contexts";
-import ToDoItem from "@/components/ToDoItem";
+import ToDoItem from "@/features/ToDoItem";
 
 export default function () {
   const toDoState = useContext(ToDoContext);
@@ -48,7 +48,12 @@ export default function () {
                 transition={{}}
                 exit={{ opacity: 0, scaleY: 0, marginTop: -56 }}
               >
-                <ToDoItem key={eachToDoItem.id} content={eachToDoItem.text} />
+                <ToDoItem
+                  completed={eachToDoItem.completed}
+                  id={eachToDoItem.id}
+                  key={eachToDoItem.id}
+                  text={eachToDoItem.text}
+                />
               </motion.div>
             );
           })}

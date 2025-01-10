@@ -1,6 +1,6 @@
 type ToDoItemType = {
   collectionName: string; // could be replace by collection id instead
-  completed: false;
+  completed: boolean;
   text: string;
   id: string;
 };
@@ -23,8 +23,8 @@ type EditorStateType = {
 };
 type ToDoReducerActionType =
   | { type: "loaded_state"; payload: ToDoStateType }
-  | { type: "deleted" }
-  | { type: "completed" }
+  | { type: "deleted"; payload: { id: string } }
+  | { type: "completed"; payload: { id: string; completed: boolean } }
   | { type: "created"; payload: ToDoItemType }
   | { type: "collection_created"; payload: CollectionItemType }
   | { type: "selected_collection_changed"; payload: { name: string } };

@@ -36,10 +36,24 @@ function toDoReducer(
       };
     }
     case "deleted": {
-      return toDoData;
+      return {
+        ...toDoData,
+        todos: toDoData.todos.filter((eachToDo) => {
+          return eachToDo.id != action.payload.id;
+        }),
+      };
     }
     case "completed": {
-      return toDoData;
+      let itemIndex = toDoData.todos.findIndex((eachToDo) => {
+        return eachToDo.id == action.payload.id;
+      });
+
+      if (itemIndex) toDoData.todos[itemIndex].completed = true;
+
+      console.log(itemIndex);
+      console.log(toDoData.todos[itemIndex].completed);
+
+      return { ...toDoData };
     }
 
     default: {
