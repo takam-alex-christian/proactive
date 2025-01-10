@@ -48,10 +48,8 @@ function toDoReducer(
         return eachToDo.id == action.payload.id;
       });
 
-      if (itemIndex) toDoData.todos[itemIndex].completed = true;
-
-      console.log(itemIndex);
-      console.log(toDoData.todos[itemIndex].completed);
+      if (itemIndex != -1)
+        toDoData.todos[itemIndex].completed = action.payload.completed;
 
       return { ...toDoData };
     }

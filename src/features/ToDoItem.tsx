@@ -33,6 +33,7 @@ export default function (toDoItemData: Omit<ToDoItemType, "collectionName">) {
     <div className="flex flex-row justify-between w-full items-center h-9 pl-3 pr-2 py-6 rounded-md bg-white  ">
       <Checkbox
         isSelected={toDoItemData.completed}
+        lineThrough
         // isSelected={toDoItemData.completed}
         onValueChange={onCheckValueChange}
         size="md"
