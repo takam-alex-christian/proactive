@@ -21,7 +21,7 @@ export default function ToDoEditor({
       <form onSubmit={onSubmit}>
         <div className="relative flex flex-row justify-between items-center h-10">
           <div className="flex flex-row items-center gap-2 px-3 bg-black text-white w-full h-full cursor-text focus-within:bg-black rounded-full">
-            <PlusSignIcon className=" text-white w-2 h-5 font-extrabold " />
+            <PlusSignIcon className=" text-white w-4 h-4 font-extrabold " />
             <input
               value={editorState.text}
               onChange={onChange}
