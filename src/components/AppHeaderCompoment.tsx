@@ -30,7 +30,7 @@ export default function ({
   let displayDateString = `${dateStringArray[0]} ${dateStringArray[2]} ${dateStringArray[1]} ${dateStringArray[3]}`;
 
   return (
-    <div className="flex flex-row w-full py-5">
+    <div className="flex flex-row w-full ">
       <div>
         <h3 className="text-xl font-semibold light:text-black dark:text-white">
           Good Morning, <span>{username}</span>

@@ -1,7 +1,7 @@
 export default function ({ children }: { children: React.ReactNode }) {
   return (
-    <div className="fixed flex flex-col items-center z-50 bottom-4 left-10 w-full">
-      <div className="w-2/3">{children}</div>
+    <div className=" flex flex-col items-center z-50 left-0 bottom-4 w-full">
+      <div className="w-full">{children}</div>
     </div>
   );
 }

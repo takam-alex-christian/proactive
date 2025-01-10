@@ -1,6 +1,6 @@
 export default function ({ children }: { children: React.ReactNode }) {
   return (
-    <div className="relative flex flex-col w-full h-full px-9 overflow-y-auto">
+    <div className="relative flex flex-col gap-4 justify-between w-full h-full px-9 py-4 ">
       {children}
     </div>
   );

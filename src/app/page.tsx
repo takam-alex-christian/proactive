@@ -28,7 +28,7 @@ export default function Home() {
   return (
     <ToDoContext.Provider value={todoState}>
       <ToDoDispatcher.Provider value={todoDispatch}>
-        <main className="flex flex-row h-screen">
+        <main className="relative flex flex-row h-screen">
           <LeftPaneFeature />
           <AppContainer>
             {/* todo header */}
