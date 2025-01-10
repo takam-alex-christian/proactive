@@ -5,9 +5,7 @@ import { ToDoContext, ToDoDispatcher } from "@/lib/contexts";
 import SimpleEditor from "@/components/SimpleEditor";
 import { EditorStateType } from "@/lib/types";
 
-export default function () {
-  const [editorValue, setEditorValue] = useState("");
-
+export default function ToDoEditor() {
   const [editorState, setEditorState] = useState<EditorStateType>({
     text: "",
     isError: false,
@@ -18,7 +16,7 @@ export default function () {
   const toDoState = useContext(ToDoContext);
 
   function editorValueChangeHandler(e: ChangeEvent<HTMLInputElement>) {
-    let textValue: string = e.currentTarget.value;
+    const textValue: string = e.currentTarget.value;
     setEditorState((prevState) => {
       return { ...prevState, text: textValue };
     });

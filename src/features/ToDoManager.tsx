@@ -1,13 +1,13 @@
 "use client";
 import { AnimatePresence, motion } from "framer-motion";
-import { ReactNode, useContext, useEffect } from "react";
+import { useContext, useEffect } from "react";
 
 import ToDoItemsLayout from "@/layouts/ToDoItemsLayout";
 
 import { ToDoContext } from "@/lib/contexts";
 import ToDoItem from "@/features/ToDoItem";
 
-export default function () {
+export default function ToDoManager() {
   const toDoState = useContext(ToDoContext);
 
   const todos = toDoState.todos.filter((eachToDo) => {

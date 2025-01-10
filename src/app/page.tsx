@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useEffect, useReducer } from "react";
+import { useEffect, useReducer } from "react";
 import { ToDoContext, ToDoDispatcher, initialToDoState } from "@/lib/contexts";
 import toDoReducer from "@/lib/reducers";
 
@@ -15,7 +15,7 @@ export default function Home() {
   const [todoState, todoDispatch] = useReducer(toDoReducer, initialToDoState);
 
   useEffect(() => {
-    let storedState = localStorage.getItem("toDoState");
+    const storedState = localStorage.getItem("toDoState");
     // use a setstate to init state
     if (storedState) {
       todoDispatch({ type: "loaded_state", payload: JSON.parse(storedState) });

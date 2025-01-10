@@ -3,7 +3,7 @@ import { ToDoContext, ToDoDispatcher } from "@/lib/contexts";
 import { Button, Chip } from "@nextui-org/react";
 import { AnimatePresence, motion } from "framer-motion";
 
-export default function () {
+export default function CollectionManager() {
   const toDoState = useContext(ToDoContext);
   const toDoDispatch = useContext(ToDoDispatcher);
 

@@ -1,6 +1,6 @@
 "use client";
 
-import { useContext, useState } from "react";
+import { useContext } from "react";
 
 import { Checkbox, Button } from "@nextui-org/react";
 
@@ -11,11 +11,13 @@ import {
   DropdownItem,
 } from "@nextui-org/dropdown";
 
-import { MenuIcon, MoreVerticalIcon } from "@/assets/uicons";
+import { MoreVerticalIcon } from "@/assets/uicons";
 import { ToDoDispatcher } from "@/lib/contexts";
 import { ToDoItemType } from "@/lib/types";
 
-export default function (toDoItemData: Omit<ToDoItemType, "collectionName">) {
+export default function ToDoItem(
+  toDoItemData: Omit<ToDoItemType, "collectionName">
+) {
   const toDoDispatch = useContext(ToDoDispatcher);
 
   function onDeletePressHandler() {

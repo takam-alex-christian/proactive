@@ -1,21 +1,15 @@
 "use client";
 
-export default function ({
+export default function AppHeaderCompoment({
   username,
   date,
 }: {
   username: string;
   date: number;
 }) {
-  let dateObj = new Date(date);
-  const dateOptions = {
-    weekday: "long",
-    year: "numeric",
-    month: "long",
-    day: "numeric",
-  };
+  const dateObj = new Date(date);
 
-  let dateFormatter = Intl.DateTimeFormat(undefined, {
+  const dateFormatter = Intl.DateTimeFormat(undefined, {
     weekday: "short",
     month: "long",
     year: "numeric",
@@ -27,7 +21,7 @@ export default function ({
     .toString()
     .replaceAll(",", ""); //Sun January 5 2025
   const dateStringArray = dateString.split(" ");
-  let displayDateString = `${dateStringArray[0]} ${dateStringArray[2]} ${dateStringArray[1]} ${dateStringArray[3]}`;
+  const displayDateString = `${dateStringArray[0]} ${dateStringArray[2]} ${dateStringArray[1]} ${dateStringArray[3]}`;
 
   return (
     <div className="flex flex-row w-full ">

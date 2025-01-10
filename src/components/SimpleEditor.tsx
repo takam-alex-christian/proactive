@@ -1,25 +1,8 @@
-import { useState, ChangeEvent } from "react";
-
 import { motion, AnimatePresence } from "framer-motion";
 
-import {
-  Textarea,
-  extendVariants,
-  Popover,
-  PopoverContent,
-} from "@nextui-org/react";
 import { PlusSignIcon } from "@/assets/uicons";
 import { EditorStateType } from "@/lib/types";
 
-const CustomTextArea = extendVariants(Textarea, {
-  variants: {
-    color: {
-      light: {
-        inputWrapper: ["bg-black", "text-white"],
-      },
-    },
-  },
-});
 export default function ToDoEditor({
   editorState,
   onSubmit,
@@ -31,7 +14,7 @@ export default function ToDoEditor({
   onChange: React.ChangeEventHandler<HTMLInputElement>;
   placeholder: string;
   isError?: boolean;
-  setError?: () => {};
+  setError?: () => void;
 }) {
   return (
     <div className="">

@@ -1,10 +1,5 @@
 import {} from "react";
-import {
-  ToDoItemType,
-  ToDoStateType,
-  ToDoReducerActionType,
-  CollectionItemType,
-} from "./types";
+import { ToDoStateType, ToDoReducerActionType } from "./types";
 
 function toDoReducer(
   toDoData: ToDoStateType,
@@ -44,7 +39,7 @@ function toDoReducer(
       };
     }
     case "completed": {
-      let itemIndex = toDoData.todos.findIndex((eachToDo) => {
+      const itemIndex = toDoData.todos.findIndex((eachToDo) => {
         return eachToDo.id == action.payload.id;
       });
 

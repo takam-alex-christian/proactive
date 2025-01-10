@@ -1,10 +1,10 @@
 "use client";
-import { FormEvent, useState, ChangeEvent, useContext, useEffect } from "react";
+import { FormEvent, useState, ChangeEvent, useContext } from "react";
 import { ToDoContext, ToDoDispatcher } from "@/lib/contexts";
 
 import SimpleEditor from "@/components/SimpleEditor";
 
-export default function () {
+export default function CollectionEditor() {
   const [editorState, setEditorState] = useState<{
     text: string;
     isError: boolean;
@@ -19,7 +19,7 @@ export default function () {
   const toDoState = useContext(ToDoContext);
 
   function editorValueChangeHandler(e: ChangeEvent<HTMLInputElement>) {
-    let textValue: string = e.currentTarget.value;
+    const textValue: string = e.currentTarget.value;
     setEditorState((prevState) => {
       return { ...prevState, text: textValue, isError: false };
     });
