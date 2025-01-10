@@ -6,7 +6,7 @@ import * as React from "react";
 
 import ProactiveApp from "./_app";
 
-const interFont = Inter({});
+const interFont = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
   title: "Create Next App",
